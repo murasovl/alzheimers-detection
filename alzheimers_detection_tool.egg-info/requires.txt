@@ -1,0 +1,8 @@
+numpy
+pandas
+opencv-python
+tensorflow
+google-cloud-storage
+python-dotenv
+fastapi
+uvicorn
