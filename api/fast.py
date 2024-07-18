@@ -1,13 +1,13 @@
 # TODO: Import your package, replace this by explicit imports of what you need
-from packagename.main import predict
+#from alzheimers_detection_tool.main import predict
 
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
 
-from registry import load_model
-from data import load_data, image_to_array
-from preprocess import preprocess
+from alzheimers_detection_tool.registry import load_model
+from alzheimers_detection_tool.data import load_data, image_to_array
+from alzheimers_detection_tool.preprocess import preprocess
 
 
 app = FastAPI()
@@ -33,6 +33,7 @@ def root():
 async def receive_image(img: UploadFile = File(...)):
     # Read the image file
     image = await img.read()
+    #img = Image.open(io.BytesIO(contents))
 
     # 1) Load the image and preprocess it
     image = load_data(image)
