@@ -9,6 +9,6 @@ from tensorflow.keras.models import load_model
 
 filepath = "/Users/linamurasov/code/murasovl/alzheimers-detection/models/alzheimer_first_draft.keras"
 
-def load_model(filepath):
-    model = load_model(filepath)
+def load_my_model():
+    model = load_model('models/alzheimer_first_draft.keras')
     return model

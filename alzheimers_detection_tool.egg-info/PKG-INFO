@@ -1,12 +1,4 @@
 Metadata-Version: 2.1
-Name: alzheimers_detection_tool
+Name: alzheimers-detection-tool
 Version: 0.0.1
 Summary: Project Description
-Requires-Dist: numpy
-Requires-Dist: pandas
-Requires-Dist: opencv-python
-Requires-Dist: tensorflow
-Requires-Dist: google-cloud-storage
-Requires-Dist: python-dotenv
-Requires-Dist: fastapi
-Requires-Dist: uvicorn
