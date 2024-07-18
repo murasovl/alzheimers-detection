@@ -1,11 +1,12 @@
 # TODO: Import your package, replace this by explicit imports of what you need
 from packagename.main import predict
 
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 
+
 from registry import load_model
-from data import load_data
+from data import load_data, image_to_array
 from preprocess import preprocess
 
 
@@ -27,26 +28,28 @@ def root():
     }
 
 # Endpoint for https://your-domain.com/predict?input_one=154&input_two=199
-@app.get("/predict")
-# POST not GET for images
-def get_predict(input_one: array):
-    # TODO: Do something with your input
-    # i.e. feed it to your model.predict, and return the output
-    # For a dummy version, just return the sum of the two inputs and the original inputs
+# our func 2
+@app.post("/upload_image")
+async def receive_image(img: UploadFile = File(...)):
+    # Read the image file
+    image = await img.read()
 
-    # call load_model()
-    model = load_model()
-    # call load_data()
-    test_data = load_data()
-    # call preprocess()
-    test_data = preprocess(test_data)
-    # call model.predict()
-    prediction = model.predict(test_data)
+    # 1) Load the image and preprocess it
+    image = load_data(image)
+    image = preprocess(image)
 
-    #prediction = float(input_one) + float(input_two)
+    # 2) Convert the image to a numpy array and preprocess it
+    image = image_to_array(image)
+
+    # 3) Load trained model
+    model1 = load_model()
+
+    # 4) Make the prediction
+    prediction = model1.predict(image)
+
     return {
-        'prediction': prediction,
-        'inputs': {
-            'input_one': input_one
+    'prediction': prediction,
+    'inputs': {
+        'input_one': img.shape
         }
     }
