@@ -1,7 +1,7 @@
 numpy
 pandas
 opencv-python
-tensorflow
+tensorflow==2.15.0
 google-cloud-storage
 python-dotenv
 fastapi
