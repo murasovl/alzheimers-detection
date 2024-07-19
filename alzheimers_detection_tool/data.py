@@ -3,18 +3,14 @@ import cv2
 from PIL import Image
 import io
 
-# load_data() preprocessing/resizing/convert if the input test image
-
-#root_dir = ""
-#image_path = os.path.join(root_dir, image_file)
 
 def load_data(image_path):
 
-    # Intepret as image
+    # open jpg file as image
     image = Image.open(io.BytesIO(image_path))
     print('image loaded')
-    # Convert to RGB
-    image_rgb = image.convert('RGB')  # Convert to RGB format
+    # Convert to RGB format
+    image_rgb = image.convert('RGB')
     # Resize
     resized_image = image_rgb.resize((224, 224))
     # Normalizing inside model.
