@@ -3,14 +3,18 @@
 #      a slim or tensorflow base
 
 #      Standard version
+
 # FROM python:3.10.6
+
 
 #      Slim version
 # FROM python:3.10-slim
 
 #      Tensorflow version
 FROM tensorflow/tensorflow:2.15.0
+
 WORKDIR /prod
+
 
 #      Or tensorflow to run on Apple Silicon (M1 / M2)
 # FROM armswdev/tensorflow-arm-neoverse:r23.08-tf-2.13.0-eigen
