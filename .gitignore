@@ -4,3 +4,4 @@ Notebooks/
 models/
 .DS_Store
 __pycache__
+.env.yaml
