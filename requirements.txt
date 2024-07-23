@@ -3,7 +3,7 @@ numpy
 pandas
 
 # img
-opencv-python
+image
 
 # Uncomment if you use sklearn
 # scikit-learn
@@ -22,3 +22,7 @@ fastapi
 uvicorn
 
 pillow
+
+shap
+matplotlib
+
