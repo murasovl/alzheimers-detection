@@ -1,0 +1,10 @@
+numpy
+pandas
+image
+google-cloud-storage
+python-dotenv
+fastapi
+uvicorn
+pillow
+shap
+matplotlib
