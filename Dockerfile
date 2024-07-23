@@ -24,6 +24,7 @@ COPY api api
 
 COPY setup.py setup.py
 COPY models models
+COPY shap shap
 #COPY credentials.json credentials.json
 
 # Install everything

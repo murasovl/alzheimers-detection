@@ -6,15 +6,16 @@ from fastapi.responses import JSONResponse
 import shap
 import matplotlib.pyplot as plt
 import numpy as np
-import io
-import base64
+import os
 from PIL import Image
 import tensorflow as tf
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
+import cv2
+
 
 # import functions of alzheimers_detection_tool
-from alzheimers_detection_tool.registry import load_my_model
+from alzheimers_detection_tool.registry import load_my_model, save_shap_plot
 from alzheimers_detection_tool.data import load_data, image_to_array
 from alzheimers_detection_tool.preprocess import preprocess
 
@@ -88,19 +89,16 @@ async def explain_image(img: UploadFile = File(...)):
         explainer = shap.Explainer(model1, masker, output_names=class_names)
         print("SHAP explainer created successfully")
 
-        shap_values = explainer(preprocessed_image, max_evals=200, batch_size=20, silent=True)
+        shap_values = explainer(preprocessed_image, max_evals=800, batch_size=30, silent=True)
         print("SHAP values computed successfully")
 
-        # Create SHAP plot
-        shap_img = io.BytesIO()
-        shap.image_plot(shap_values, preprocessed_image)
-        plt.savefig(shap_img, format='png')
-        shap_img.seek(0)
+        #Create and saving SHAP plot
+        save_shap_plot(shap_values, preprocessed_image)
         print("SHAP plot created successfully")
 
-        # Convert SHAP plot to base64
-        shap_img_base64 = base64.b64encode(shap_img.read()).decode('utf-8')
-        print("SHAP plot converted to base64 successfully")
 
-        response2 = {"shap_image": shap_img_base64}
-        return JSONResponse(content=response2)
+        #Opening the saved shapley explaination to send it as response to the http request
+        img_plot = Image.open(os.path.join("shap", "img_plot.png"))
+        img_plot = np.array(img_plot)
+        response2 = cv2.imencode('.png', img_plot)[1]
+        return Response(content=response2.tobytes(), media_type="image/png")
