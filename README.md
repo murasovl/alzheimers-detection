@@ -4,15 +4,6 @@ This repository contains the code and resources for a deep learning model develo
 
 [1] Simonyan, Karen, and Andrew Zisserman. "Very deep convolutional networks for large-scale image recognition." arXiv preprint arXiv:1409.1556 (2014).
 
-## Table of Contents
-
-Introduction
-Dataset
-Model Architecture
-Model Performance
-Package Details
-Try it Out
-
 ## Introduction
 
 This project utilizes transfer learning with the VGG-19 model to classify MRI images of the brain. The model aims to accurately identify specific features or conditions present in the central axial slice of brain MRI scans. The model predicts three classes: Non-demented, very mild dementia, and mild dementia.
