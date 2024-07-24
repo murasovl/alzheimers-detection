@@ -15,6 +15,8 @@ WORKDIR /prod
 #      Or tensorflow to run on Apple Silicon (M1 / M2)
 # FROM armswdev/tensorflow-arm-neoverse:r23.08-tf-2.13.0-eigen
 
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 COPY requirements.txt requirements_docker.txt
 RUN pip install -r requirements_docker.txt
 # Copy everything we need into the image

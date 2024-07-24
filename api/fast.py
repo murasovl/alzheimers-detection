@@ -89,7 +89,7 @@ async def explain_image(img: UploadFile = File(...)):
         explainer = shap.Explainer(model1, masker, output_names=class_names)
         print("SHAP explainer created successfully")
 
-        shap_values = explainer(preprocessed_image, max_evals=800, batch_size=30, silent=True)
+        shap_values = explainer(preprocessed_image, max_evals=100, batch_size=100, silent=True)
         print("SHAP values computed successfully")
 
         #Create and saving SHAP plot
