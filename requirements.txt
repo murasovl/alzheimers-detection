@@ -3,7 +3,9 @@ numpy
 pandas
 
 # img
+
 image
+opencv-python
 
 # Uncomment if you use sklearn
 # scikit-learn
@@ -26,3 +28,6 @@ pillow
 shap
 matplotlib
 
+Response
+
+#os
