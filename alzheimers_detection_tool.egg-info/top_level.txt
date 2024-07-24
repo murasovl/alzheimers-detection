@@ -1,2 +1,0 @@
-alzheimers_detection_tool
-api
