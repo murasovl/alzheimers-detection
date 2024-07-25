@@ -29,7 +29,6 @@ The model uses the VGG-19 architecture with pre-trained weights from ImageNet. T
 
 ## Model Performace
 
-- **Loss**: 0.756
 - **Accuracy**: 0.685
 - **Recall:** 0.659
 - **Precision:** 0.711
@@ -40,6 +39,10 @@ The model uses the VGG-19 architecture with pre-trained weights from ImageNet. T
 - **data.py**: Preprocessing of data (converting to RGB format, resizing)
 - **preprocess.py**: VGG-19 specific preprocessing
 - **registry.py**: Loading local trained model
+
+## Notebook 
+
+The notebook with the package code is available on Kaggle: "Alzheimer_Detection_Tool_VGG19 (https://www.kaggle.com/code/benediktreff/alzheimer-detection-tool-vgg19)
 
 ## Try it Out
 
